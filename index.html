@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <title>AFA Media | AI Booking Systems & Professional Websites</title>
+    <meta name="description" content="AFA Media builds high-conversion websites and AI booking systems for UK businesses. Stop missing leads and automate your appointments 24/7." />
+    <link rel="canonical" href="https://www.afamedia.co.uk/" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AFA Media",
+        "url": "https://www.afamedia.co.uk",
+        "logo": "https://ik.imagekit.io/hxkb52bem/afa%20media%20logo%20no%20BG.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+44 7516 294378",
+          "contactType": "customer service",
+          "areaServed": "GB",
+          "availableLanguage": "en"
+        }
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary: #0891B2;
+        --secondary: #0F172A;
+        --slate-50: #F8FAFC;
+      }
+      
+      html { scroll-behavior: smooth; background-color: #ffffff; }
+      body { 
+        background-color: #ffffff; 
+        color: #1e293b; 
+        margin: 0; 
+        font-family: 'Plus Jakarta Sans', sans-serif; 
+        -webkit-font-smoothing: antialiased; 
+        overflow-x: hidden;
+      }
+      
+      .premium-shadow {
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 4px 10px -5px rgba(0, 0, 0, 0.02);
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #f8fafc; }
+      ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0891B2',
+              slate900: '#0F172A',
+              slate800: '#1e293b',
+              slate50: '#F8FAFC',
+            },
+            fontFamily: { 
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            }
+          },
+        },
+      }
+    </script>
+
+    <!-- Voiceflow Chatbot Integration (Updated) -->
+    <script type="text/javascript">
+      (function(d, t) {
+          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          v.onload = function() {
+            window.voiceflow.chat.load({
+              verify: { projectID: '6910925e6076dd72b3b0c250' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production',
+              voice: {
+                url: "https://runtime-api.voiceflow.com"
+              }
+            });
+          }
+          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
