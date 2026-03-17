@@ -828,7 +828,7 @@ const AboutAndWork = ({ navigateTo }: { navigateTo: (p: PageState) => void }) =>
                  <Quote className="absolute top-6 right-6 text-slate-200" size={32} />
                  <p className="text-slate-700 italic font-medium relative z-10 mb-6 text-lg">"The site is great even on the phone. You've streamlined our presence in a way that actually feels like a high-performance business."</p>
                  <div className="flex items-center gap-4">
-                   <img src="https://i.postimg.cc/PsD7wsMp/Screenshot-2026-02-16-173423.png" className="w-10 h-10 rounded-lg bg-white border border-slate-200 p-0.5 object-contain" alt="Legentax Logo" />
+                   <img src="https://i.postimg.cc/J4c9hTgR/legentax-logo.png" className="w-10 h-10 rounded-lg bg-white border border-slate-200 p-0.5 object-contain" alt="Legentax Logo" />
                    <div>
                      <p className="text-sm font-black text-slate-900">Gökhan Aydoğdu</p>
                      <p className="text-[10px] font-bold text-primary uppercase tracking-widest">Legentax</p>
@@ -897,23 +897,23 @@ const Pricing = ({ navigateTo }: { navigateTo: (p: PageState) => void }) => (
           name: "Starter Plan", 
           price: "£450", 
           mo: "+ £95/mo", 
-          desc: "A professional 1-page site with built-in AI booking.", 
-          features: ["1 Page Business Build", "24/7 AI Booking Assistant", "14-Day Delivery"]
+          desc: "A professional 3-page site with built-in AI booking.", 
+          features: ["3 Page Business Build", "24/7 AI Booking Assistant", "14-Day Delivery"]
         },
         { 
           name: "Growth Plan", 
           price: "£795", 
           mo: "+ £145/mo", 
-          desc: "The complete 3-page authority site with lead filtering.", 
+          desc: "The complete 5-page authority site with lead filtering.", 
           popular: true,
-          features: ["3 Page Authority Site", "Advanced Lead Qualification", "SEO Setup", "FREE Ad Campaign Setup"]
+          features: ["5 Page Authority Site", "Advanced Lead Qualification", "SEO Setup", "FREE Ad Campaign Setup"]
         },
         { 
           name: "Elite Plan", 
           price: "£1,350", 
           mo: "+ £245/mo", 
           desc: "The full automated system for market leaders.", 
-          features: ["5+ Page Authority Site", "WhatsApp Integration", "Advanced AI Training", "VIP Direct Support"]
+          features: ["8 Page Authority Site", "WhatsApp Integration", "Advanced AI Training", "VIP Direct Support"]
         }
       ].map(p => (
         <ScrollReveal key={p.name}>
@@ -964,7 +964,7 @@ const Pricing = ({ navigateTo }: { navigateTo: (p: PageState) => void }) => (
                 <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 italic">Smart Chatbot Integration</h3>
               </div>
               <div className="mb-6">
-                <div className="text-3xl font-black text-slate-900 mb-1">£290</div>
+                <div className="text-3xl font-black text-slate-900 mb-1">£390</div>
                 <div className="text-sm font-bold text-slate-400">+ £80/mo retainer</div>
               </div>
               <p className="text-sm text-slate-500 font-medium mb-8 leading-relaxed italic">Already have a website? We'll integrate a custom-trained AI assistant to capture your leads 24/7 on your existing platform.</p>

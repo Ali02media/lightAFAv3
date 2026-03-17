@@ -17,7 +17,7 @@ export const TESTIMONIALS = [
     author: "Gökhan Aydoğdu",
     company: "Legentax",
     url: "https://legentax.co.uk",
-    logo: "https://i.ibb.co/PsD7wsMp/Screenshot-2026-02-16-173423.png"
+    logo: "https://i.postimg.cc/J4c9hTgR/legentax-logo.png"
   }
 ];
 

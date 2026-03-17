@@ -21,7 +21,7 @@ We are offering discounted "Founder's Rates" in exchange for a video testimonial
    - **BETA PRICE:** £450 setup + £95/mo.
 
 2. **Growth Plan (Recommended):**
-   - 3-page high-authority site + lead filtering.
+   - 5-page high-authority site + lead filtering.
    - **BETA PRICE:** £795 setup + £145/mo.
    - **Includes:** Free Meta Ads setup.
 
@@ -30,7 +30,7 @@ We are offering discounted "Founder's Rates" in exchange for a video testimonial
    - **BETA PRICE:** £1,350 setup + £245/mo.
 
 **ADDITIONAL OFFERS:**
-- **Chatbot Integration:** Add our AI lead capture to an existing website for £290 setup + £80/mo retainer.
+- **Chatbot Integration:** Add our AI lead capture to an existing website for £390 setup + £80/mo retainer.
 - **Neural Email Campaign:** Psychology-driven email sequences (1-4 emails). Price is via Custom Quote.
 
 **CRITICAL RULE:**
