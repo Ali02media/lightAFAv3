@@ -93,51 +93,57 @@
 
     <!-- Voiceflow Chatbot Integration (Updated) -->
     <script type="text/javascript">
-      (function(d, t) {
-          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          v.onload = function() {
-            window.voiceflow.chat.load({
-              verify: { projectID: '6910925e6076dd72b3b0c250' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production',
-              voice: {
-                url: "https://runtime-api.voiceflow.com"
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          (function(d, t) {
+              var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+              v.onload = function() {
+                window.voiceflow.chat.load({
+                  verify: { projectID: '6910925e6076dd72b3b0c250' },
+                  url: 'https://general-runtime.voiceflow.com',
+                  versionID: 'production',
+                  voice: {
+                    url: "https://runtime-api.voiceflow.com"
+                  }
+                });
               }
-            });
-          }
-          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
+              v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+          })(document, 'script');
+        }, 1500); // Delay Voiceflow to prioritize main UI rendering
+      });
     </script>
 
     <!-- Dynamic Apple Splash Screen -->
     <script>
-      (function() {
-        if (!window.navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches) {
-          var canvas = document.createElement('canvas');
-          var ctx = canvas.getContext('2d');
-          var w = window.screen.width * window.devicePixelRatio;
-          var h = window.screen.height * window.devicePixelRatio;
-          canvas.width = w;
-          canvas.height = h;
-          
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, w, h);
-          
-          var img = new Image();
-          img.crossOrigin = 'Anonymous';
-          img.onload = function() {
-            var imgW = 120 * window.devicePixelRatio;
-            var imgH = (img.height / img.width) * imgW;
-            ctx.drawImage(img, (w - imgW) / 2, (h - imgH) / 2, imgW, imgH);
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          if (!window.navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var w = window.screen.width * window.devicePixelRatio;
+            var h = window.screen.height * window.devicePixelRatio;
+            canvas.width = w;
+            canvas.height = h;
             
-            var link = document.createElement('link');
-            link.rel = 'apple-touch-startup-image';
-            link.href = canvas.toDataURL('image/png');
-            document.head.appendChild(link);
-          };
-          img.src = 'https://i.postimg.cc/NFTLThTQ/afa-media-logo1-remove.png';
-        }
-      })();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, w, h);
+            
+            var img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = function() {
+              var imgW = 120 * window.devicePixelRatio;
+              var imgH = (img.height / img.width) * imgW;
+              ctx.drawImage(img, (w - imgW) / 2, (h - imgH) / 2, imgW, imgH);
+              
+              var link = document.createElement('link');
+              link.rel = 'apple-touch-startup-image';
+              link.href = canvas.toDataURL('image/png');
+              document.head.appendChild(link);
+            };
+            img.src = 'https://i.postimg.cc/NFTLThTQ/afa-media-logo1-remove.png';
+          }
+        }, 2000); // Delay splash screen generation
+      });
     </script>
   </head>
   <body>

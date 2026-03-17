@@ -11,6 +11,7 @@ export function ShaderAnimation() {
     renderer: THREE.WebGLRenderer
     uniforms: any
     animationId: number
+    cleanup?: () => void
   } | null>(null)
 
   useEffect(() => {
@@ -18,12 +19,13 @@ export function ShaderAnimation() {
 
     const container = containerRef.current
 
-    // Vertex shader
-    const vertexShader = `
-      void main() {
-        gl_Position = vec4( position, 1.0 );
-      }
-    `
+    const initTimeout = setTimeout(() => {
+      // Vertex shader
+      const vertexShader = `
+        void main() {
+          gl_Position = vec4( position, 1.0 );
+        }
+      `
 
     // Fragment shader
     const fragmentShader = `
@@ -141,21 +143,38 @@ export function ShaderAnimation() {
     // Start animation
     animate()
 
+    // Fade in the canvas
+    renderer.domElement.style.opacity = "0";
+    renderer.domElement.style.transition = "opacity 1s ease-in-out";
+    setTimeout(() => {
+      if (renderer.domElement) renderer.domElement.style.opacity = "1";
+    }, 50);
+
+    // Store cleanup functions on sceneRef
+    sceneRef.current.cleanup = () => {
+      window.removeEventListener("resize", onWindowResize);
+      observer.disconnect();
+      geometry.dispose();
+      material.dispose();
+    };
+
+    }, 500); // 500ms delay
+
     // Cleanup function
     return () => {
-      window.removeEventListener("resize", onWindowResize)
-      observer.disconnect()
-
-      if (sceneRef.current) {
-        cancelAnimationFrame(sceneRef.current.animationId)
-
-        if (container && sceneRef.current.renderer.domElement) {
-          container.removeChild(sceneRef.current.renderer.domElement)
+      clearTimeout(initTimeout);
+      const sceneData = sceneRef.current as any;
+      if (sceneData) {
+        if (sceneData.cleanup) sceneData.cleanup();
+        if (sceneData.animationId) {
+          cancelAnimationFrame(sceneData.animationId)
         }
 
-        sceneRef.current.renderer.dispose()
-        geometry.dispose()
-        material.dispose()
+        if (container && sceneData.renderer.domElement && container.contains(sceneData.renderer.domElement)) {
+          container.removeChild(sceneData.renderer.domElement)
+        }
+
+        sceneData.renderer.dispose()
       }
     }
   }, [])
