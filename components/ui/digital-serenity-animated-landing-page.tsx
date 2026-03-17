@@ -8,17 +8,15 @@ const DigitalSerenity = ({ navigateTo }: { navigateTo: (p: any) => void }) => {
   const floatingElementsRef = useRef<Element[]>([]);
 
   useEffect(() => {
-    const animateWords = () => {
+    // Use requestAnimationFrame to ensure DOM is ready and avoid blocking main thread
+    const rafId = requestAnimationFrame(() => {
       const wordElements = document.querySelectorAll('.word-animate');
       wordElements.forEach(word => {
         const delay = parseInt(word.getAttribute('data-delay') || '0');
-        setTimeout(() => {
-          if (word) (word as HTMLElement).style.animation = 'word-appear 1s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-        }, delay);
+        (word as HTMLElement).style.animation = `word-appear 1s cubic-bezier(0.16, 1, 0.3, 1) forwards ${delay}ms`;
       });
-    };
-    const timeoutId = setTimeout(animateWords, 100);
-    return () => clearTimeout(timeoutId);
+    });
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   useEffect(() => {
