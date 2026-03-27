@@ -20,11 +20,25 @@ const CustomCursor: React.FC = () => {
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0) translate(-50%, -50%)`;
       }
+    };
+
+    const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      isHovering.current = !!(target.tagName.toLowerCase() === 'button' || target.closest('button') || target.tagName.toLowerCase() === 'a');
+      if (target.tagName.toLowerCase() === 'button' || target.closest('button') || target.tagName.toLowerCase() === 'a') {
+        isHovering.current = true;
+      }
+    };
+
+    const onMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName.toLowerCase() === 'button' || target.closest('button') || target.tagName.toLowerCase() === 'a') {
+        isHovering.current = false;
+      }
     };
 
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseover', onMouseOver, { passive: true });
+    window.addEventListener('mouseout', onMouseOut, { passive: true });
     
     let animationFrameId: number;
     const animateFollower = () => {
@@ -42,6 +56,8 @@ const CustomCursor: React.FC = () => {
     animateFollower();
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('mouseout', onMouseOut);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

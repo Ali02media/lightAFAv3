@@ -22,8 +22,7 @@ const DigitalSerenity = ({ navigateTo }: { navigateTo: (p: any) => void }) => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (mouseGradientRef.current) {
-        mouseGradientRef.current.style.left = `${e.clientX}px`;
-        mouseGradientRef.current.style.top = `${e.clientY}px`;
+        mouseGradientRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
         mouseGradientRef.current.style.opacity = '1';
       }
     };
@@ -67,8 +66,8 @@ const DigitalSerenity = ({ navigateTo }: { navigateTo: (p: any) => void }) => {
       border-radius: 9999px;
       background-image: radial-gradient(circle, rgba(0, 102, 255, 0.15), rgba(255, 255, 255, 0) 60%);
       transform: translate(-50%, -50%);
-      will-change: left, top, opacity;
-      transition: left 100ms ease-out, top 100ms ease-out, opacity 500ms ease-out;
+      will-change: transform, opacity;
+      transition: opacity 500ms ease-out;
       z-index: 0;
       mix-blend-mode: multiply;
     }

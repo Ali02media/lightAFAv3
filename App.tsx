@@ -59,7 +59,7 @@ const Navbar = ({
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (o: boolean) => void;
 }) => (
-  <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-slate-100 py-2 md:py-3 shadow-sm' : 'bg-transparent py-4 md:py-8'}`}>
+  <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled || mobileMenuOpen ? 'bg-white/90 backdrop-blur-md border-b border-slate-100 py-2 md:py-3 shadow-sm' : 'bg-transparent py-4 md:py-8'}`}>
     <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center h-12 md:h-14">
       <button onClick={() => navigateTo('home')} className="hover:opacity-80 transition-opacity flex items-center h-full py-1">
         <Logo className="h-8 md:h-12 w-auto" />
@@ -1304,24 +1304,37 @@ export default function App() {
   const [calculatedGap, setCalculatedGap] = useState<number | undefined>();
 
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -1350,8 +1363,7 @@ export default function App() {
         setMobileMenuOpen={setMobileMenuOpen} 
       />
       
-      <div className={`fixed inset-0 bg-white/90 backdrop-blur-2xl z-[110] flex flex-col items-center justify-center gap-8 md:gap-12 transition-transform duration-500 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <button className="absolute top-8 right-8 text-slate-900 p-2" onClick={() => setMobileMenuOpen(false)} aria-label="Close Menu"><X size={36} /></button>
+      <div className={`fixed inset-0 bg-white/95 backdrop-blur-3xl z-[90] flex flex-col items-center justify-center gap-8 md:gap-12 transition-transform duration-500 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {['Home', 'About', 'Why Us', 'Pricing', 'Contact'].map((item) => (
           <button 
             key={item} 

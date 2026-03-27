@@ -38,61 +38,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    
-    <style>
-      :root {
-        --primary: #0891B2;
-        --secondary: #0F172A;
-        --slate-50: #F8FAFC;
-      }
-      
-      html { scroll-behavior: smooth; background-color: #ffffff; }
-      body { 
-        background-color: #ffffff; 
-        color: #1e293b; 
-        margin: 0; 
-        font-family: 'Plus Jakarta Sans', sans-serif; 
-        -webkit-font-smoothing: antialiased; 
-        overflow-x: hidden;
-      }
-      
-      .premium-shadow {
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 4px 10px -5px rgba(0, 0, 0, 0.02);
-      }
-
-      .animate-fade-in {
-        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #f8fafc; }
-      ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-    </style>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#0891B2',
-              slate900: '#0F172A',
-              slate800: '#1e293b',
-              slate50: '#F8FAFC',
-            },
-            fontFamily: { 
-              sans: ['Plus Jakarta Sans', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-            }
-          },
-        },
-      }
-    </script>
 
     <!-- Voiceflow Chatbot Integration (Updated) -->
     <script type="text/javascript">
@@ -113,39 +58,6 @@
               v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
           })(document, 'script');
         }, 1500); // Delay Voiceflow to prioritize main UI rendering
-      });
-    </script>
-
-    <!-- Dynamic Apple Splash Screen -->
-    <script>
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          if (!window.navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches) {
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
-            var w = window.screen.width * window.devicePixelRatio;
-            var h = window.screen.height * window.devicePixelRatio;
-            canvas.width = w;
-            canvas.height = h;
-            
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, w, h);
-            
-            var img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = function() {
-              var imgW = 120 * window.devicePixelRatio;
-              var imgH = (img.height / img.width) * imgW;
-              ctx.drawImage(img, (w - imgW) / 2, (h - imgH) / 2, imgW, imgH);
-              
-              var link = document.createElement('link');
-              link.rel = 'apple-touch-startup-image';
-              link.href = canvas.toDataURL('image/png');
-              document.head.appendChild(link);
-            };
-            img.src = 'https://i.postimg.cc/dtSywjrn/afa-media-logo1-remove.png';
-          }
-        }, 2000); // Delay splash screen generation
       });
     </script>
   </head>
